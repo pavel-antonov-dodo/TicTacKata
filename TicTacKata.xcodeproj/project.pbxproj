@@ -16,6 +16,7 @@
 		2F3A0B2427F1C049006490F7 /* TicTacKataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A0B2327F1C049006490F7 /* TicTacKataTests.swift */; };
 		2F3A0B2E27F1C049006490F7 /* TicTacKataUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A0B2D27F1C049006490F7 /* TicTacKataUITests.swift */; };
 		2F3A0B3027F1C049006490F7 /* TicTacKataUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A0B2F27F1C049006490F7 /* TicTacKataUITestsLaunchTests.swift */; };
+		2F3A0B3E27F1C371006490F7 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A0B3D27F1C371006490F7 /* Grid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		2F3A0B2927F1C049006490F7 /* TicTacKataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacKataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F3A0B2D27F1C049006490F7 /* TicTacKataUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacKataUITests.swift; sourceTree = "<group>"; };
 		2F3A0B2F27F1C049006490F7 /* TicTacKataUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacKataUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2F3A0B3D27F1C371006490F7 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		2F3A0B0B27F1C03F006490F7 /* TicTacKata */ = {
 			isa = PBXGroup;
 			children = (
+				2F3A0B3C27F1C35A006490F7 /* Models */,
 				2F3A0B0C27F1C03F006490F7 /* AppDelegate.swift */,
 				2F3A0B0E27F1C040006490F7 /* SceneDelegate.swift */,
 				2F3A0B1027F1C040006490F7 /* ViewController.swift */,
@@ -125,6 +128,14 @@
 				2F3A0B2F27F1C049006490F7 /* TicTacKataUITestsLaunchTests.swift */,
 			);
 			path = TicTacKataUITests;
+			sourceTree = "<group>";
+		};
+		2F3A0B3C27F1C35A006490F7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2F3A0B3D27F1C371006490F7 /* Grid.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 				2F3A0B1127F1C040006490F7 /* ViewController.swift in Sources */,
 				2F3A0B0D27F1C03F006490F7 /* AppDelegate.swift in Sources */,
 				2F3A0B0F27F1C040006490F7 /* SceneDelegate.swift in Sources */,
+				2F3A0B3E27F1C371006490F7 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

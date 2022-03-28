@@ -17,20 +17,26 @@ class TicTacKataTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_gridSize_equals3x3() {
+        let grid = Grid()
+        XCTAssertEqual(grid.size.width, 3)
+        XCTAssertEqual(grid.size.height, 3)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_grid_emptyOnStart() {
+        let grid = Grid()
+        let fields = grid.fields
+        XCTAssertTrue(fields.allSatisfy({ $0.state == .empty }))
     }
-
+    
+    func test_gridFieldCount_equalsGridSize() {
+        let grid = Grid()
+        XCTAssertEqual(grid.fields.count, Int(grid.size.width * grid.size.height))
+    }
+    
+    func test_getFieldByCoordinate_returnField() {
+        let grid = Grid()
+        XCTAssertNotNil(grid[0,0])
+    }
 }
