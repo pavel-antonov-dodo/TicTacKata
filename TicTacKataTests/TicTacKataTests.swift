@@ -27,7 +27,7 @@ class TicTacKataTests: XCTestCase {
     func test_grid_emptyOnStart() {
         let grid = Grid()
         let fields = grid.fields
-        XCTAssertTrue(fields.allSatisfy({ $0.state == .empty }))
+        XCTAssertTrue(fields.allSatisfy({ $0.getState() == .empty }))
     }
     
     func test_gridFieldCount_equalsGridSize() {
@@ -39,4 +39,98 @@ class TicTacKataTests: XCTestCase {
         let grid = Grid()
         XCTAssertNotNil(grid[0,0])
     }
+    
+    func test_getFieldByOutOfBoundsCoordinate_returnNil() {
+        let grid = Grid()
+        XCTAssertNil(grid[0,100])
+    }
+    
+    func test_fieldState_equalsX() {
+        let grid = Grid()
+        grid[0,0]?.setState(.x)
+        XCTAssertEqual(grid[0,0]?.getState(), FieldState.x)
+    }
+    
+    func test_fieldState_equalsO() {
+        let grid = Grid()
+        grid[0,0]?.setState(.o)
+        XCTAssertEqual(grid[0,0]?.getState(), FieldState.o)
+    }
+    
+    func test_fieldStateX_couldntChangeState() {
+        let grid = Grid()
+        grid[0,0]?.setState(.x)
+        grid[0,0]?.setState(.o)
+        XCTAssertEqual(grid[0,0]?.getState(), FieldState.x)
+    }
+    
+    
+    func test_notAllFieldsTaken_shouldnotGameOver() {
+        let game = Game()
+        game.grid[0,0]?.setState(.x)
+        XCTAssertEqual(game.status, GameStatus.active)
+    }
+    
+    func test_getColumnStates_shouldReturnColumnStates() {
+        let game = Game()
+        game.grid[0,0]?.setState(.x)
+        XCTAssertEqual(game.grid.getColumnStates(0), [FieldState.x, FieldState.empty, FieldState.empty])
+    }
+    
+    func test_getColumnStatesIndexOutOfBounds_shouldReturnNil() {
+        let game = Game()
+        XCTAssertNil(game.grid.getColumnStates(-1))
+    }
+    
+    func test_allFieldsInColumn0TakenByX_shouldGameOver() {
+        let game = Game()
+        game.grid[0,0]?.setState(.x)
+        game.grid[1,0]?.setState(.x)
+        game.grid[2,0]?.setState(.x)
+        XCTAssertEqual(game.status, GameStatus.over)
+    }
+    
+    func test_allFieldsInColumn1TakenByX_shouldGameOver() {
+        let game = Game()
+        game.grid[0,1]?.setState(.x)
+        game.grid[1,1]?.setState(.x)
+        game.grid[2,1]?.setState(.x)
+        XCTAssertEqual(game.status, GameStatus.over)
+    }
+    
+    func test_allFieldsInColumn2TakenByX_shouldGameOver() {
+        let game = Game()
+        game.grid[0,2]?.setState(.x)
+        game.grid[1,2]?.setState(.x)
+        game.grid[2,2]?.setState(.x)
+        XCTAssertEqual(game.status, GameStatus.over)
+    }
+    
+    func test_allFieldsTaken_shouldGameOver() {
+        let game = Game()
+        for i in (0..<3) {
+            for j in (0..<3) {
+                game.grid[i,j]?.setState(.x)
+            }
+        }
+        XCTAssertEqual(game.status, GameStatus.over)
+    }
+    
+//    func test_allFieldsTaken_whenNobodyWins_shouldGameOver() {
+//        let game = Game()
+//        
+//        game.grid[0,0]?.setState(.x)
+//        game.grid[0,1]?.setState(.x)
+//        game.grid[0,2]?.setState(.o)
+//        
+//        game.grid[1,0]?.setState(.o)
+//        game.grid[1,1]?.setState(.o)
+//        game.grid[1,2]?.setState(.x)
+//        
+//        game.grid[2,0]?.setState(.x)
+//        game.grid[2,1]?.setState(.o)
+//        game.grid[2,2]?.setState(.x)
+//        
+//        XCTAssertEqual(game.status, GameStatus.over)
+//    }
 }
